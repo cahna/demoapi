@@ -4,7 +4,7 @@ HOST: http://localhost:8080
 # Interview mock API
 
 # Group API
-Manage foosball player data.
+Manage product data.
 
 ## Products [/products]
 Lists of Products.
@@ -12,31 +12,59 @@ Lists of Products.
 ### List all Products [GET]
 + Response 200 (application/json)
 
-        [
-          { "id": 1, "name": "CoolApp", "price": 19.99, "relatedProducts": [2, 3]  }, 
-          { "id": 2, "name": "Foo", "price": 8.99, "relatedProducts": []  }, 
-          { "id": 3, "name": "Bar", "price": 9001.00, "relatedProducts": []  }, 
-        ]
+        {
+            "result": [
+                { "id": 1, "name": "CoolApp", "price": 19.99, "relatedProducts": [2, 3]  }, 
+                { "id": 2, "name": "Foo", "price": 8.99, "relatedProducts": []  }, 
+                { "id": 3, "name": "Bar", "price": 9001.00, "relatedProducts": []  }, 
+            ]
+        }
 
 ## Product [/products/{id}]
 A single product object.
 
+### Retrieve a Product - 1 [GET]
 + Parameters
-    + id (required, number, `2`) ... Numeric `id` of the product
+    + id (required, number, `1`) ... Numeric `id` of the product
 
-+ Model (application/json)
++ Response 200 (application/json)
 
-    + Body
-    
-            {
+        {
+            "result": {
                 "id": 1,
                 "name": "CoolApp",
                 "price": 19.99,
-                "relatedProducts": []
+                "relatedProducts": [2, 3]
             }
+        }
+        
+### Retrieve a Product - 2 [GET]
++ Parameters
+    + id (required, number, `2`) ... Numeric `id` of the product
 
-### Retrieve a Product [GET]
 + Response 200 (application/json)
 
-        [Product][]
+        {
+            "result": {
+                "id": 2,
+                "name": "Foo",
+                "price": 8.99,
+                "relatedProducts": []
+            }
+        }
+
+### Retrieve a Product - 3 [GET]
++ Parameters
+    + id (required, number, `3`) ... Numeric `id` of the product
+
++ Response 200 (application/json)
+
+        {
+            "result": {
+                "id": 3,
+                "name": "Bar",
+                "price": 9001.00,
+                "relatedProducts": []
+            }
+        }
 
