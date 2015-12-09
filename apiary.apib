@@ -1,0 +1,42 @@
+FORMAT: 1A
+HOST: http://localhost:8080
+
+# Interview mock API
+
+# Group API
+Manage foosball player data.
+
+## Products [/products]
+Lists of Products.
+
+### List all Products [GET]
++ Response 200 (application/json)
+
+        [
+          { "id": 1, "name": "CoolApp", "price": 19.99, "relatedProducts": [2, 3]  }, 
+          { "id": 2, "name": "Foo", "price": 8.99, "relatedProducts": []  }, 
+          { "id": 3, "name": "Bar", "price": 9001.00, "relatedProducts": []  }, 
+        ]
+
+## Product [/products/{id}]
+A single product object.
+
++ Parameters
+    + id (required, number, `2`) ... Numeric `id` of the product
+
++ Model (application/json)
+
+    + Body
+    
+            {
+                "id": 1,
+                "name": "CoolApp",
+                "price": 19.99,
+                "relatedProducts": []
+            }
+
+### Retrieve a Product [GET]
++ Response 200 (application/json)
+
+        [Product][]
+
